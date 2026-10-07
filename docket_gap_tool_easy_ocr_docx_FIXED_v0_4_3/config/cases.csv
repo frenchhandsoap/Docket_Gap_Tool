@@ -1,0 +1,4 @@
+case_name,case_folder,artifact_zip,docket_pdf,docket_text,docket_docx
+# Optional exact mapping. Delete this comment row or leave it; blank/comment-like rows are ignored by the tool.
+# Example: Penn Virginia Corp,Penn Virginia Corp,input/downloaded_artifacts/Alpha Natural Resources, Inc.zip,input/docket_pdfs/penn_virginia.pdf,
+# Example Word docket: Patriot Coal,Patriot Coal Corp,input/downloaded_artifacts/artifacts.zip,,,input/docket_word_docs/patriot.docx

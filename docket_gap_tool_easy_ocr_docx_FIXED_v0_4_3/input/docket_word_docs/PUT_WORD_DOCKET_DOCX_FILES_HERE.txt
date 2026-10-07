@@ -1,0 +1,1 @@
+Put Word .docx docket exports here. The one-click runner will treat them like docket text sources.

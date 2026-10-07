@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "docket-gap-tool"
+version = "0.4.3"
+description = "Local bankruptcy docket gap checker for Bloomberg docket text and downloaded PDF/ZIP artifacts."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Generated for docket reconciliation workflow"}]
+dependencies = ["pypdf>=4.0.0", "openpyxl>=3.1.0", "pymupdf>=1.23.0", "pytesseract>=0.3.10", "pillow>=10.0.0", "python-docx>=1.1.0"]
+
+[project.scripts]
+docket-gap = "docket_gap_tool.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["docket_gap_tool*"]
+
+[tool.setuptools.package-data]
+docket_gap_tool = ["*.json"]

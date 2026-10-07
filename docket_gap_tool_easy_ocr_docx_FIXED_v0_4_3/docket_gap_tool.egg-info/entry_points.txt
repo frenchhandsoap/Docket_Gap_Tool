@@ -1,0 +1,2 @@
+[console_scripts]
+docket-gap = docket_gap_tool.cli:main

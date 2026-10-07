@@ -1,0 +1,75 @@
+Metadata-Version: 2.4
+Name: docket-gap-tool
+Version: 0.4.3
+Summary: Local bankruptcy docket gap checker for Bloomberg docket text and downloaded PDF/ZIP artifacts.
+Author: Generated for docket reconciliation workflow
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: pypdf>=4.0.0
+Requires-Dist: openpyxl>=3.1.0
+Requires-Dist: pymupdf>=1.23.0
+Requires-Dist: pytesseract>=0.3.10
+Requires-Dist: pillow>=10.0.0
+Requires-Dist: python-docx>=1.1.0
+
+# Docket Gap Tool v0.4.2
+
+This version fixes generic wrapper ZIP folders such as `New folder (3)`. If your downloaded documents ZIP contains subfolders inside a generic parent folder, the tool now matches against the real inner case folders instead of the outer wrapper.
+
+# Docket Gap Tool
+
+Start with `README_FIRST.md` for the one-click workflow.
+
+This package inventories downloaded bankruptcy docket artifacts, parses Bloomberg docket printout PDFs or text files, applies configurable skip/keep rules, and creates an Excel workbook showing which entries are downloadable now versus request-needed.
+
+## Fast start
+
+1. Put downloaded case ZIPs into `input/downloaded_artifacts/`.
+2. Put browser-saved docket PDFs into `input/docket_pdfs/`.
+3. Run one of:
+   - macOS: `RUN_ME_MAC.command`
+   - Windows: `RUN_ME_WINDOWS.bat`
+   - Linux: `bash RUN_ME_LINUX.sh`
+4. Open `output/docket_gap_download_request_by_case.xlsx`.
+
+## Command-line examples
+
+Single case from PDF:
+
+```bash
+docket-gap analyze \
+  --artifact-zip "input/downloaded_artifacts/Alpha Natural Resources, Inc.zip" \
+  --case-folder "Penn Virginia Corp" \
+  --case-name "Penn Virginia Corp" \
+  --docket-pdf "input/docket_pdfs/penn_virginia.pdf" \
+  --output-dir output_penn
+```
+
+Force OCR for a scanned PDF:
+
+```bash
+docket-gap import-pdf --input-pdf input/docket_pdfs/penn_virginia.pdf --ocr force
+```
+
+Folder-based one-click run from terminal:
+
+```bash
+docket-gap auto
+```
+
+
+Word docket files: put `.docx` files in `input/docket_word_docs/`. Do not put them in `input/docket_texts/`; that folder is only for `.txt`.
+
+
+## v0.4.3 fix
+
+This version fixes downloaded-artifact matching when your downloaded ZIP contains case ZIPs inside a generic parent folder, for example:
+
+```text
+New folder (3).zip
+  New folder (3)/
+    Akorn, Inc..zip
+    Chinos Holdings.zip
+```
+
+The tool now opens those nested case ZIPs and inventories the PDFs inside them instead of treating `New folder (3)` as the case folder or misreading `(3)` as docket entry 3.

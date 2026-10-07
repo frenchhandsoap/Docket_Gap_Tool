@@ -1,0 +1,34 @@
+{
+  "note": "Configurable rules for docket-gap-tool. Rules are evaluated in order. matched rules with action=skip are excluded from final request/download list; action=review goes to review_optional; action=keep stays in final.",
+  "keep_rules": [
+    {"name": "DIP/financing/cash collateral", "pattern": "\\b(DIP|postpetition financing|cash collateral|adequate protection|superpriority|swap agreement|new lender party)\\b"},
+    {"name": "Plan/disclosure/confirmation", "pattern": "\\b(chapter 11 plan|plan of reorganization|disclosure statement|confirmation|confirming|confirmed|solicitation|ballot|rights offering|plan supplement)\\b"},
+    {"name": "Sale/settlement/9019/compromise", "pattern": "\\b(sale|purchase agreement|asset purchase|APA|settlement|settling|compromise|9019|stipulation and agreed order)\\b"},
+    {"name": "Objection/response/reply/brief", "pattern": "\\b(objection|limited objection|response|reply|brief|memorandum|joinder|reservation of rights)\\b"},
+    {"name": "Claims/bar date/omnibus claim objection", "pattern": "\\b(bar date|proofs? of claim|objection to claim|omnibus objection|claims objection|administrative expense claim|allowance and payment|substantial contribution claim)\\b"},
+    {"name": "Adversary/complaint/litigation", "pattern": "\\b(adversary|complaint|declaratory judgment|motion to compel|discovery|relief from stay|automatic stay|injunction)\\b"},
+    {"name": "Executory contracts/rejection/assumption", "pattern": "\\b(assume|assumption|reject|rejection|executory contract|unexpired lease)\\b"}
+  ],
+  "skip_rules": [
+    {"name": "Already downloaded", "pattern": "^$", "internal": "downloaded"},
+    {"name": "Fee receipt/payment admin", "pattern": "\\b(receipt|payment cleared|filing fee|u\\.s\\. treasury receipt)\\b"},
+    {"name": "BNC/certificate of mailing", "pattern": "\\b(BNC certificate|certificate of mailing|notice of filing of official transcript)\\b"},
+    {"name": "Service affidavit/certificate", "pattern": "\\b(affidavit of service|certificate of service|supplemental certificate of service)\\b"},
+    {"name": "Notice/appearance/request for notice", "pattern": "\\b(notice of appearance|request for notice|request for service|demand for service|notice and request for|notice of withdrawal of appearance|withdrawal of appearance)\\b"},
+    {"name": "Pro hac vice/admission", "pattern": "\\b(pro hac vice|admission pro hac vice|admission to practice|appear and practice)\\b"},
+    {"name": "Hearing scheduling/admin", "pattern": "\\b(hearing scheduled|hearing set|hearing cancelled|hearing continued|time of hearing rescheduled|notice of hearing|notice of motion and notice of hearing|agenda of matters|notice of agenda|notice of adjournment|motion to expedite hearing|order setting.*hearing)\\b"},
+    {"name": "Transcript admin", "pattern": "\\b(transcript filed|official transcript|redaction deadline|transcript access|court reporter|transcriber)\\b"},
+    {"name": "Schedules/SOFA/admin lists", "pattern": "\\b(schedule\\(s\\)|statement\\(s\\)|statement of financial affairs|schedules of assets and liabilities|creditor matrix|mailing matrix|rule 2002 list|master service list|list of creditors)\\b"},
+    {"name": "341/meeting/admin", "pattern": "\\b(meeting of creditors|341 meeting)\\b"},
+    {"name": "Deficiency/modification/no action", "pattern": "\\b(notice of deficient filing|deficient filing|entry modification|no action taken|document filed in closed case)\\b"},
+    {"name": "Claims transfer/withdrawal/address", "pattern": "\\b(withdrawal of claim|withdrawal of document|creditor change of address|debtor\\(s\\) change of address|claims satisfied|change of address)\\b"},
+    {"name": "Professional retention/fees/monthly statements", "pattern": "\\b(application to employ|application for compensation|final fee application|monthly fee statement|monthly statement|certification of no objection.*fee|staffing report|retention and employment|retain and employ|retain and employment|professionals utilized in ordinary course|interim compensation|disinterestedness)\\b"},
+    {"name": "DIP/monthly/quarterly operating report", "pattern": "\\b(monthly report of debtor|quarterly report|periodic report|post confirmation quarterly report)\\b"},
+    {"name": "Routine court/admin order", "pattern": "\\b(order regarding electronic devices|order of designation|telephonic appearances|disposition of exhibits|exhibits destroyed|receipt of exhibits)\\b"}
+  ],
+  "review_rules": [
+    {"name": "Possible final-decree/closeout", "pattern": "\\b(final decree|motion for final decree|case closed|closing certain chapter 11 cases|case hereby closed)\\b"},
+    {"name": "Possible sealed/redacted item", "pattern": "\\b(sealed|under seal|redacted)\\b"},
+    {"name": "Possible letter/shareholder item", "pattern": "\\b(letter|shareholder|equity security holder)\\b"}
+  ]
+}
